@@ -9,13 +9,10 @@ var button = document.querySelector("#searchBtn");
 var gifResult = document.querySelector("#gifResult");
 
 // Takes in user's typed input
-userInput.addEventListener("keydown", function(value) {
-  // Stores value of user's typed input
-  var searchInput = document.querySelector("#userInput").value;
-
-  if (value.key === "Enter") {
-    console.log(searchInput);
-    // Add show gif function here
+userInput.addEventListener("keydown", function(event) {
+  // Search for gif when user hits enter
+  if (event.key === "Enter") {
+    showGif(event);
   }
 });
 
@@ -24,3 +21,36 @@ button.addEventListener("click", function() {
   console.log("Button clicked");
   // Add show gif function here
 });
+
+// Function for API call and GET request
+var showGif = function(event) {
+  var xhr = new XMLHttpRequest();
+
+  // Stores value of user's typed input
+  var searchInput = document.querySelector("#userInput").value;
+  console.log(searchInput);
+
+  //   API call for a random GIF
+  xhr.open(
+    "get",
+    "http://api.giphy.com/v1/gifs/search?q==" +
+      searchInput +
+      "&api_key=" +
+      mykey
+  );
+
+  xhr.onreadystatechange = function() {
+    var DONE = 4; // readyState 4 means the request is done.
+    var OK = 200; // status 200 is a successful return.
+    if (xhr.readyState === DONE) {
+      if (xhr.status === OK) {
+        var gifs = JSON.parse(this.responseText).data; // an array of gif objects
+
+        console.log(gifs);
+      } else {
+        alert("Error: " + xhr.status); // An error occurred during the request.
+      }
+    }
+  };
+  xhr.send(null);
+};
