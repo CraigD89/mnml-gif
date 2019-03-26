@@ -33,10 +33,11 @@ var showGif = function(event) {
   //   API call for a random GIF
   xhr.open(
     "get",
-    "http://api.giphy.com/v1/gifs/random?q==" +
+    "http://api.giphy.com/v1/gifs/search?q==" +
       searchInput +
       "&api_key=" +
-      mykey
+      mykey +
+      "&limit=1"
   );
 
   xhr.onreadystatechange = function() {
@@ -47,7 +48,10 @@ var showGif = function(event) {
         var gifs = JSON.parse(this.responseText).data; // receives gif object
 
         console.log(gifs);
-        
+
+        // Pushes gis object url into div (building out right now)
+        gifResult.innerHTML = "<img src='" + gifs.images.original.url+ "' />";
+
       } else {
         alert("Error: " + xhr.status); // An error occurred during the request.
       }
