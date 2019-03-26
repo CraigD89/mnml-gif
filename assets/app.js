@@ -33,7 +33,7 @@ var showGif = function(event) {
   //   API call for a random GIF
   xhr.open(
     "get",
-    "http://api.giphy.com/v1/gifs/search?q==" +
+    "http://api.giphy.com/v1/gifs/random?q==" +
       searchInput +
       "&api_key=" +
       mykey
@@ -44,9 +44,10 @@ var showGif = function(event) {
     var OK = 200; // status 200 is a successful return.
     if (xhr.readyState === DONE) {
       if (xhr.status === OK) {
-        var gifs = JSON.parse(this.responseText).data; // an array of gif objects
+        var gifs = JSON.parse(this.responseText).data; // receives gif object
 
         console.log(gifs);
+        
       } else {
         alert("Error: " + xhr.status); // An error occurred during the request.
       }
