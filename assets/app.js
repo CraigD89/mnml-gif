@@ -8,26 +8,19 @@ var userInput = document.querySelector("#userInput");
 var button = document.querySelector("#searchBtn");
 var gifResult = document.querySelector("#gifResult");
 
-// Stores value of user's input
-
-
-// console.log(userInput);
-// console.log(button);
-// console.log(gifResult);
-
-// Takes in user's input
+// Takes in user's typed input
 userInput.addEventListener("keydown", function(value) {
- 
- var searchInput = document.querySelector("#userInput").value;
+  // Stores value of user's typed input
+  var searchInput = document.querySelector("#userInput").value;
 
- 
-    if (value.key === "Enter") {
+  if (value.key === "Enter") {
     console.log(searchInput);
+    // Add show gif function here
   }
-
 });
 
 // Adds functionality to the search button
 button.addEventListener("click", function() {
   console.log("Button clicked");
+  // Add show gif function here
 });
