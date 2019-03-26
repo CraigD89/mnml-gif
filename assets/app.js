@@ -49,9 +49,12 @@ var showGif = function(event) {
 
         console.log(gifs);
 
-        // Pushes gis object url into div (building out right now)
-        gifResult.innerHTML = "<img src='" + gifs.images.original.url+ "' />";
-
+        // Pushes gis object url into div
+        gifResult.innerHTML = gifs
+          .map(function(gif) {
+            return "<img src='" + gif.images.downsized.url + "' />";
+          })
+          .join("");
       } else {
         alert("Error: " + xhr.status); // An error occurred during the request.
       }
