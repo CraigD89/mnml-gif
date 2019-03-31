@@ -1,5 +1,3 @@
-// alert("Connected!");
-
 // Selects API key from config file
 var mykey = config.MY_KEY;
 
@@ -18,8 +16,6 @@ userInput.addEventListener("keydown", function(event) {
 
 // Adds functionality to the search button
 button.addEventListener("click", function(event) {
-  // console.log("Button clicked");
-  // Add show gif function here
   showGif(event);
 });
 
