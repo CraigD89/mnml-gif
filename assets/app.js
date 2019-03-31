@@ -17,9 +17,10 @@ userInput.addEventListener("keydown", function(event) {
 });
 
 // Adds functionality to the search button
-button.addEventListener("click", function() {
-  console.log("Button clicked");
+button.addEventListener("click", function(event) {
+  // console.log("Button clicked");
   // Add show gif function here
+  showGif(event);
 });
 
 // Function for API call and GET request
